@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Wisata Religi Makam Syekh Maulana Mangun Sejati — Desa Bugel, Kecamatan Kedung, Kabupaten Jepara." />
+  <title>Wisata Religi Desa Bugel — Jepara</title>
+
+  <!-- Fonts: DM Serif Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js" defer></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<header class="nav" id="nav">
+  <div class="nav__inner container">
+    <a href="#hero" class="nav__logo">
+      <i class="ph-fill ph-mosque" aria-hidden="true"></i>
+      <span>Desa Bugel</span>
+    </a>
+    <nav class="nav__links" aria-label="Navigasi utama">
+      <a href="#tentang"  class="nav__link">Tentang</a>
+      <a href="#sejarah"  class="nav__link">Sejarah</a>
+      <a href="#tokoh"    class="nav__link">Tokoh</a>
+      <a href="#haul"     class="nav__link">Haul</a>
+      <a href="#galeri"   class="nav__link">Galeri</a>
+      <a href="#kontak"   class="nav__link">Kontak</a>
+    </nav>
+    <a href="#kontak" class="btn btn--sm btn--cta-nav nav__cta">
+      <i class="ph ph-map-pin-simple-area"></i> Kunjungi Kami
+    </a>
+    <button class="nav__burger" id="navBurger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- Mobile Drawer -->
+  <div class="nav__drawer" id="navDrawer" aria-hidden="true">
+    <a href="#tentang"  class="nav__drawer-link">Tentang</a>
+    <a href="#sejarah"  class="nav__drawer-link">Sejarah</a>
+    <a href="#tokoh"    class="nav__drawer-link">Tokoh</a>
+    <a href="#haul"     class="nav__drawer-link">Haul</a>
+    <a href="#galeri"   class="nav__drawer-link">Galeri</a>
+    <a href="#kontak"   class="nav__drawer-link">Kontak</a>
+  </div>
+</header>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__bg">
+    <div class="hero__grain"></div>
+    <div class="hero__glow hero__glow--1"></div>
+    <div class="hero__glow hero__glow--2"></div>
+    <div class="hero__orb"></div>
+  </div>
+  <div class="hero__content container">
+    <div class="hero__tag reveal-up">
+      <i class="ph ph-map-pin-simple-area"></i>
+      <span>Warisan Religi Jepara</span>
+    </div>
+    <h1 class="hero__title">
+      <span class="reveal-line">Wisata Religi</span>
+      <em class="reveal-line gold-text">Desa Bugel</em>
+    </h1>
+    <p class="hero__sub reveal-up">Makam Syekh Maulana Mangun Sejati</p>
+    <p class="hero__desc reveal-up">
+      Mengabadikan sejarah penyebaran Islam di Jepara sejak abad ke-16
+      melalui platform digital modern.
+    </p>
+    <div class="hero__meta reveal-up">
+      <span class="meta-chip"><i class="ph ph-map-pin"></i> Kec. Kedung, Kab. Jepara</span>
+      <span class="meta-chip"><i class="ph ph-calendar-dots"></i> Haul 27 Maulid</span>
+    </div>
+    <div class="hero__cta reveal-up">
+      <a href="#sejarah" class="btn btn--primary">Jelajahi Sejarah</a>
+      <a href="#kontak"  class="btn btn--outline">Info Ziarah</a>
+    </div>
+  </div>
+  <a href="#tentang" class="hero__scroll" aria-label="Scroll ke bawah">
+    <i class="ph ph-arrow-down"></i>
+  </a>
+</section>
+
+<!-- ═══════════════ TENTANG ═══════════════ -->
+<section class="about section" id="tentang">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Tentang</span>
+      <h2 class="section-title">Mengenal <span class="gold-text">Desa Bugel</span></h2>
+      <p class="section-lead">Desa Bugel, Kecamatan Kedung, Kabupaten Jepara — saksi penyebaran Islam di pesisir utara Jawa sejak abad ke-16.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card reveal-up">
+        <div class="stat-card__icon"><i class="ph ph-buildings"></i></div>
+        <div class="stat-card__value">Abad ke-16</div>
+        <div class="stat-card__label">Berdirinya Desa</div>
+      </div>
+      <div class="stat-card reveal-up" style="--delay:.1s">
+        <div class="stat-card__icon"><i class="ph ph-users-three"></i></div>
+        <div class="stat-card__value">5.000+</div>
+        <div class="stat-card__label">Peziarah / Tahun</div>
+      </div>
+      <div class="stat-card reveal-up" style="--delay:.2s">
+        <div class="stat-card__icon"><i class="ph ph-star"></i></div>
+        <div class="stat-card__value">27 Maulid</div>
+        <div class="stat-card__label">Haul Tahunan</div>
+      </div>
+      <div class="stat-card reveal-up" style="--delay:.3s">
+        <div class="stat-card__icon"><i class="ph ph-qr-code"></i></div>
+        <div class="stat-card__value">Digital</div>
+        <div class="stat-card__label">Akses QR Code</div>
+      </div>
+    </div>
+    <div class="about__body">
+      <div class="about__text reveal-left">
+        <p>Desa Bugel menyimpan warisan budaya dan spiritual yang kaya. Nama "Bugel" lahir dari peristiwa bersejarah yang melibatkan Syekh Maulana Mangun Sejati — ulama besar dari Jazirah Arab.</p>
+        <p>Kini, makam beliau menjadi destinasi ziarah aktif yang dikunjungi dari berbagai penjuru. Wisata religi ini menjadi pintu untuk memahami sejarah dan kearifan lokal Jepara.</p>
+        <a href="#sejarah" class="btn btn--outline">Baca Sejarah Lengkap</a>
+      </div>
+      <div class="about__ornament reveal-right">
+        <div class="ornament-ring">
+          <div class="ornament-inner">
+            <span class="ornament-year">± 1550</span>
+            <span class="ornament-label">Tahun Berdiri</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SEJARAH / TIMELINE ═══════════════ -->
+<section class="history section" id="sejarah">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Sejarah</span>
+      <h2 class="section-title">Asal Usul <span class="gold-text">Desa Bugel</span></h2>
+      <p class="section-lead">Perjalanan panjang dari kedatangan seorang ulama hingga terbentuknya identitas Desa Bugel.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline__item reveal-left">
+        <div class="timeline__node"><i class="ph ph-book-open-text"></i></div>
+        <div class="timeline__card">
+          <span class="timeline__tag">Pertengahan Abad ke-16</span>
+          <h3>Kedatangan Syekh Maulana</h3>
+          <p>Ulama dari Jazirah Arab tiba di pesisir utara Jawa untuk menyebarkan ajaran Islam dengan pendekatan damai dan keteladanan.</p>
+        </div>
+      </div>
+      <div class="timeline__item timeline__item--right reveal-right">
+        <div class="timeline__node"><i class="ph ph-sword"></i></div>
+        <div class="timeline__card">
+          <span class="timeline__tag">Peristiwa Bersejarah</span>
+          <h3>Mengalahkan 10 Perampok</h3>
+          <p>Dalam peristiwa legendaris, beliau berhasil mengalahkan 10 perampok. Kayu-kayu patah (tugel) berserakan menjadi tanda keberanian beliau.</p>
+        </div>
+      </div>
+      <div class="timeline__item reveal-left">
+        <div class="timeline__node"><i class="ph ph-tree"></i></div>
+        <div class="timeline__card">
+          <span class="timeline__tag">Asal Muasal Nama</span>
+          <h3>Lahirnya Nama "Bugel"</h3>
+          <p>Kata "Bugel" berasal dari "tugel" (patah dalam bahasa Jawa) — mengabadikan peristiwa heroik sebagai identitas desa hingga hari ini.</p>
+        </div>
+      </div>
+      <div class="timeline__item timeline__item--right reveal-right">
+        <div class="timeline__node"><i class="ph ph-scroll"></i></div>
+        <div class="timeline__card">
+          <span class="timeline__tag">Warisan Hingga Kini</span>
+          <h3>Makam & Tradisi Haul</h3>
+          <p>Makam Syekh Maulana aktif diziarahi. Setiap 27 Maulid, ribuan peziarah hadir memperingati haul sang ulama.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ TOKOH ═══════════════ -->
+<section class="profile section" id="tokoh">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Tokoh Utama</span>
+      <h2 class="section-title">Syekh Maulana <span class="gold-text">Mangun Sejati</span></h2>
+      <p class="section-lead">Ulama penyebar Islam dari Jazirah Arab, cikal bakal Desa Bugel, sosok teladan hingga hari ini.</p>
+    </div>
+    <div class="profile__hero reveal-up">
+      <div class="profile__avatar">
+        <i class="ph ph-user-circle"></i>
+      </div>
+      <h3 class="profile__name">Syekh Maulana Mangun Sejati</h3>
+      <p class="profile__origin">Jazirah Arab &nbsp;·&nbsp; Abad ke-16</p>
+      <p class="profile__bio">Seorang ulama yang datang dengan misi mulia menyebarkan Islam melalui kebijaksanaan. Beliau tidak hanya mengajarkan agama, tetapi juga menjadi pelindung masyarakat dari ancaman perampok, meninggalkan legenda yang diabadikan dalam nama Desa Bugel.</p>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal-up">
+        <div class="value-card__icon"><i class="ph ph-shield-star"></i></div>
+        <h4>Keberanian</h4>
+        <p>Menghadapi kejahatan dan menegakkan kebenaran di masa penuh tantangan.</p>
+      </div>
+      <div class="value-card reveal-up" style="--delay:.1s">
+        <div class="value-card__icon"><i class="ph ph-heart"></i></div>
+        <h4>Dakwah Damai</h4>
+        <p>Menyebarkan Islam melalui keteladanan, kasih sayang, dan kebijaksanaan.</p>
+      </div>
+      <div class="value-card reveal-up" style="--delay:.2s">
+        <div class="value-card__icon"><i class="ph ph-handshake"></i></div>
+        <h4>Musyawarah</h4>
+        <p>Mengedepankan dialog dan pengampunan dalam menyelesaikan perselisihan.</p>
+      </div>
+      <div class="value-card reveal-up" style="--delay:.3s">
+        <div class="value-card__icon"><i class="ph ph-sparkle"></i></div>
+        <h4>Identitas Budaya</h4>
+        <p>Menjadi simbol kearifan lokal dan kebanggaan masyarakat Bugel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HAUL ═══════════════ -->
+<section class="haul section" id="haul">
+  <div class="haul__bg-text" aria-hidden="true">HAUL</div>
+  <div class="container haul__inner">
+    <div class="haul__date reveal-up">
+      <span class="haul__date-sup">Haul</span>
+      <span class="haul__date-num">27</span>
+      <span class="haul__date-sub">Maulid</span>
+    </div>
+    <div class="haul__info">
+      <div class="section-header reveal-left haul__section-header">
+        <span class="eyebrow">Agenda Tahunan</span>
+        <h2 class="section-title">Haul <span class="gold-text">Syekh Maulana</span></h2>
+        <p class="section-lead">Peringatan tahunan yang menjadi momen spiritual paling dinantikan masyarakat Desa Bugel dan peziarah dari seluruh penjuru.</p>
+      </div>
+      <div class="haul__details">
+        <div class="haul__detail reveal-left">
+          <i class="ph ph-calendar-dots"></i>
+          <div><strong>Tanggal</strong><span>27 Maulid (setiap tahun)</span></div>
+        </div>
+        <div class="haul__detail reveal-left" style="--delay:.1s">
+          <i class="ph ph-map-pin-line"></i>
+          <div><strong>Lokasi</strong><span>Makam Syekh Maulana Mangun Sejati, Desa Bugel</span></div>
+        </div>
+        <div class="haul__detail reveal-left" style="--delay:.2s">
+          <i class="ph ph-users"></i>
+          <div><strong>Peserta</strong><span>Ribuan peziarah dari berbagai daerah</span></div>
+        </div>
+        <div class="haul__detail reveal-left" style="--delay:.3s">
+          <i class="ph ph-moon-stars"></i>
+          <div><strong>Tradisi</strong><span>Zikir bersama, doa, dan tausiyah keagamaan</span></div>
+        </div>
+      </div>
+      <a href="#kontak" class="btn btn--primary reveal-left" style="--delay:.4s">Info &amp; Ziarah</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALERI ═══════════════ -->
+<section class="gallery section" id="galeri">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Galeri</span>
+      <h2 class="section-title">Foto &amp; <span class="gold-text">Dokumentasi</span></h2>
+      <p class="section-lead">Momen berharga dari Makam Syekh Maulana Mangun Sejati dan kegiatan wisata religi Desa Bugel.</p>
+    </div>
+    <div class="gallery__filter reveal-up">
+      <button class="filter-btn active" data-filter="all">Semua</button>
+      <button class="filter-btn" data-filter="makam">Makam</button>
+      <button class="filter-btn" data-filter="haul">Haul</button>
+      <button class="filter-btn" data-filter="ziarah">Ziarah</button>
+      <button class="filter-btn" data-filter="desa">Desa</button>
+    </div>
+    <div class="gallery__grid">
+      <div class="gallery__item reveal-up" data-cat="makam"
+           data-title="Area Makam"
+           data-desc="Area makam Syekh Maulana Mangun Sejati yang terawat dan dikeramatkan oleh masyarakat Desa Bugel dan sekitarnya.">
+        <div class="gallery__placeholder"><i class="ph ph-image"></i><span>Area Makam</span></div>
+        <div class="gallery__overlay">
+          <span class="gallery__cat">Makam</span>
+          <h4>Area Makam</h4>
+          <span class="gallery__click-hint"><i class="ph ph-arrows-out"></i> Lihat Detail</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal-up" style="--delay:.08s" data-cat="haul"
+           data-title="Kegiatan Haul"
+           data-desc="Ribuan peziarah memenuhi area makam setiap perayaan Haul tahunan pada tanggal 27 Maulid untuk mendoakan sang ulama.">
+        <div class="gallery__placeholder"><i class="ph ph-image"></i><span>Kegiatan Haul</span></div>
+        <div class="gallery__overlay">
+          <span class="gallery__cat">Haul</span>
+          <h4>Kegiatan Haul</h4>
+          <span class="gallery__click-hint"><i class="ph ph-arrows-out"></i> Lihat Detail</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal-up" style="--delay:.16s" data-cat="makam"
+           data-title="Gerbang Masuk"
+           data-desc="Gerbang utama menuju kompleks makam Syekh Maulana Mangun Sejati yang menyambut setiap peziarah yang datang.">
+        <div class="gallery__placeholder"><i class="ph ph-image"></i><span>Gerbang Masuk</span></div>
+        <div class="gallery__overlay">
+          <span class="gallery__cat">Makam</span>
+          <h4>Gerbang Masuk</h4>
+          <span class="gallery__click-hint"><i class="ph ph-arrows-out"></i> Lihat Detail</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal-up" style="--delay:.24s" data-cat="ziarah"
+           data-title="Suasana Ziarah"
+           data-desc="Peziarah dari berbagai penjuru daerah khusyuk memanjatkan doa di depan makam Syekh Maulana Mangun Sejati.">
+        <div class="gallery__placeholder"><i class="ph ph-image"></i><span>Suasana Ziarah</span></div>
+        <div class="gallery__overlay">
+          <span class="gallery__cat">Ziarah</span>
+          <h4>Suasana Ziarah</h4>
+          <span class="gallery__click-hint"><i class="ph ph-arrows-out"></i> Lihat Detail</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal-up" style="--delay:.32s" data-cat="desa"
+           data-title="Desa Bugel"
+           data-desc="Suasana Desa Bugel, Kecamatan Kedung, Kabupaten Jepara — desa bersejarah yang menjadi cikal bakal penyebaran Islam di kawasan ini.">
+        <div class="gallery__placeholder"><i class="ph ph-image"></i><span>Desa Bugel</span></div>
+        <div class="gallery__overlay">
+          <span class="gallery__cat">Desa</span>
+          <h4>Desa Bugel</h4>
+          <span class="gallery__click-hint"><i class="ph ph-arrows-out"></i> Lihat Detail</span>
+        </div>
+      </div>
+      <div class="gallery__item reveal-up" style="--delay:.40s" data-cat="haul"
+           data-title="Ribuan Peziarah"
+           data-desc="Momen Haul tahunan menghadirkan ribuan peziarah — menjadikannya salah satu agenda wisata religi terbesar di Kabupaten Jepara.">
+        <div class="gallery__placeholder"><i class="ph ph-image"></i><span>Ribuan Peziarah</span></div>
+        <div class="gallery__overlay">
+          <span class="gallery__cat">Haul</span>
+          <h4>Ribuan Peziarah</h4>
+          <span class="gallery__click-hint"><i class="ph ph-arrows-out"></i> Lihat Detail</span>
+        </div>
+      </div>
+    </div>
+    <p class="gallery__note reveal-up">* Foto dokumentasi aktual akan ditambahkan. Hubungi pengelola desa untuk berkontribusi.</p>
+  </div>
+</section>
+
+<!-- ═══════════════ LIGHTBOX MODAL ═══════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery lightbox">
+  <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+  <div class="lightbox__container">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Tutup">
+      <i class="ph ph-x"></i>
+    </button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Sebelumnya">
+      <i class="ph ph-caret-left"></i>
+    </button>
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Berikutnya">
+      <i class="ph ph-caret-right"></i>
+    </button>
+    <div class="lightbox__image-wrap">
+      <div class="lightbox__placeholder" id="lightboxPlaceholder">
+        <i class="ph ph-image"></i>
+        <span id="lightboxPlaceholderText">Foto belum tersedia</span>
+      </div>
+    </div>
+    <div class="lightbox__info">
+      <div class="lightbox__meta">
+        <span class="lightbox__cat" id="lightboxCat"></span>
+        <span class="lightbox__counter" id="lightboxCounter"></span>
+      </div>
+      <h3 class="lightbox__title" id="lightboxTitle"></h3>
+      <p class="lightbox__desc" id="lightboxDesc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ KONTAK ═══════════════ -->
+<section class="contact section" id="kontak">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <span class="eyebrow">Informasi</span>
+      <h2 class="section-title">Cara <span class="gold-text">Berkunjung</span></h2>
+      <p class="section-lead">Makam terbuka untuk umum dan siap menyambut peziarah setiap hari.</p>
+    </div>
+    <div class="contact__grid">
+      <div class="contact__map reveal-left">
+        <div class="map-box">
+          <i class="ph ph-navigation-arrow"></i>
+          <h3>Lokasi Makam</h3>
+          <p>Desa Bugel, Kec. Kedung, Kab. Jepara</p>
+          <a href="https://www.google.com/maps/dir/-6.5732608,110.6968576/Makam+Syeh+Maulana+Mangun+Sejati,+8MJ6%2BVWH,+Rw.+III,+Bugel,+Kec.+Kedung,+Kabupaten+Jepara,+Jawa+Tengah+59463/@-6.6204168,110.6382937,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x2e70e1b30fc7c75d:0x3871ad3ab9ca8d05!2m2!1d110.6623344!2d-6.6678174?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" class="btn btn--primary">Buka Google Maps</a>
+        </div>
+      </div>
+      <div class="contact__info reveal-right">
+        <div class="contact__item">
+          <div class="contact__icon"><i class="ph ph-map-pin"></i></div>
+          <div><strong>Alamat</strong><span>Desa Bugel, Kecamatan Kedung, Kabupaten Jepara, Jawa Tengah</span></div>
+        </div>
+        <div class="contact__item">
+          <div class="contact__icon"><i class="ph ph-clock"></i></div>
+          <div><strong>Waktu Ziarah</strong><span>Setiap hari, pagi hingga sore hari</span></div>
+        </div>
+        <div class="contact__item">
+          <div class="contact__icon"><i class="ph ph-envelope"></i></div>
+          <div><strong>Email</strong><span>desabugel.kedung@jepara.go.id</span></div>
+        </div>
+        <div class="contact__rules">
+          <h4><i class="ph ph-info"></i> Tata Cara Ziarah</h4>
+          <ul>
+            <li>Bersikap sopan dan menjaga kesucian area makam</li>
+            <li>Membaca doa &amp; Al-Fatihah untuk almarhum</li>
+            <li>Tidak membuat kebisingan di area makam</li>
+            <li>Mengikuti petunjuk penjaga makam</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="footer">
+  <!-- CTA Banner -->
+  <div class="footer__cta-banner">
+    <div class="container footer__cta-inner">
+      <div class="footer__cta-text">
+        <span class="eyebrow">Siap Berkunjung?</span>
+        <h3>Makam dibuka setiap hari untuk para peziarah</h3>
+      </div>
+      <div class="footer__cta-actions">
+        <a href="https://www.google.com/maps/dir/-6.5732608,110.6968576/Makam+Syeh+Maulana+Mangun+Sejati,+8MJ6%2BVWH,+Rw.+III,+Bugel,+Kec.+Kedung,+Kabupaten+Jepara,+Jawa+Tengah+59463/@-6.6204168,110.6382937,13z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x2e70e1b30fc7c75d:0x3871ad3ab9ca8d05!2m2!1d110.6623344!2d-6.6678174?entry=ttu&g_ep=EgoyMDI2MDcxOS4wIKXMDSoASAFQAw%3D%3D"
+           target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+          <i class="ph ph-navigation-arrow"></i> Petunjuk Arah
+        </a>
+        <a href="#kontak" class="btn btn--ghost">
+          <i class="ph ph-info"></i> Info Ziarah
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main footer -->
+  <div class="footer__main">
+    <div class="container footer__grid">
+      <!-- Brand -->
+      <div class="footer__brand">
+        <div class="footer__logo"><i class="ph-fill ph-mosque"></i> Desa Bugel</div>
+        <p class="footer__tagline">Wisata Religi Jepara</p>
+        <p class="footer__desc">Makam Syekh Maulana Mangun Sejati — warisan Islam dan budaya Desa Bugel, Kecamatan Kedung, Kabupaten Jepara, Jawa Tengah.</p>
+      </div>
+
+      <!-- Info -->
+      <div class="footer__info">
+        <h4>Informasi Lokasi</h4>
+        <div class="footer__info-item">
+          <i class="ph ph-map-pin"></i>
+          <span>Desa Bugel, Kec. Kedung, Kab. Jepara 59463</span>
+        </div>
+        <div class="footer__info-item">
+          <i class="ph ph-clock"></i>
+          <span>Buka setiap hari, pagi – sore</span>
+        </div>
+        <div class="footer__info-item">
+          <i class="ph ph-calendar-dots"></i>
+          <span>Haul: setiap 27 Maulid</span>
+        </div>
+        <div class="footer__info-item">
+          <i class="ph ph-envelope"></i>
+          <span>desabugel.kedung@jepara.go.id</span>
+        </div>
+      </div>
+
+      <!-- Quick links -->
+      <div class="footer__quick">
+        <h4>Jelajahi</h4>
+        <div class="footer__quick-grid">
+          <a href="#tentang" class="footer__quick-link"><i class="ph ph-arrow-right"></i> Tentang</a>
+          <a href="#sejarah" class="footer__quick-link"><i class="ph ph-arrow-right"></i> Sejarah</a>
+          <a href="#tokoh"   class="footer__quick-link"><i class="ph ph-arrow-right"></i> Tokoh</a>
+          <a href="#haul"    class="footer__quick-link"><i class="ph ph-arrow-right"></i> Haul</a>
+          <a href="#galeri"  class="footer__quick-link"><i class="ph ph-arrow-right"></i> Galeri</a>
+          <a href="#kontak"  class="footer__quick-link"><i class="ph ph-arrow-right"></i> Kontak</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer__bottom">
+    <div class="container footer__bottom-inner">
+      <p>&copy; 2025 Wisata Religi Desa Bugel &mdash; Program KKN</p>
+      <div class="footer__bottom-badges">
+        <span class="footer__badge"><i class="ph ph-map-pin-simple"></i> Jepara, Jawa Tengah</span>
+        <span class="footer__badge"><i class="ph ph-mosque"></i> Wisata Religi</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
