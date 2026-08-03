@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Banner Cetak — Wisata Religi Desa Bugel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- dom-to-image-more: lebih reliable dari html2canvas untuk export -->
+  <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@3.1.7/dist/dom-to-image-more.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:   #D4AF37;
+      --gold-2: #F4D577;
+      --gold-3: #B89429;
+      --dark:   #0D0D0D;
+      --dark-2: #1A1A1A;
+      --dark-3: #242424;
+      --text:   #F0ECD8;
+      --text-2: #C8C0A0;
+      --text-3: #908060;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #2a2a2a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      gap: 1.5rem;
+      min-height: 100vh;
+    }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+    }
+
+    .tbtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.4rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    .tbtn--gold {
+      background: linear-gradient(135deg, #B89429, #D4AF37, #F4D577);
+      color: #0D0D0D;
+    }
+    .tbtn--gold:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(212,175,55,0.4); }
+
+    .tbtn--dark {
+      background: #1A1A1A;
+      color: #E0E0E0;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .tbtn--dark:hover { background: #2a2a2a; transform: translateY(-2px); }
+
+    .tbtn--outline {
+      background: transparent;
+      color: #ccc;
+      border: 1.5px solid rgba(255,255,255,0.2);
+    }
+    .tbtn--outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    #exportStatus {
+      font-size: 0.8rem;
+      color: #aaa;
+      text-align: center;
+      min-height: 1.2rem;
+    }
+
+    /* ── Banner Canvas ── */
+    #bannerWrap {
+      width: 794px;   /* A4 portrait @ 96dpi */
+      flex-shrink: 0;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.7);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    #banner {
+      width: 794px;
+      min-height: 1123px;
+      background: var(--dark);
+      color: var(--text);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top accent bar ── */
+    .b-topbar {
+      height: 6px;
+      background: linear-gradient(90deg, #B89429, #D4AF37, #F4D577, #D4AF37, #B89429);
+      flex-shrink: 0;
+    }
+
+    /* ── Header ── */
+    .b-header {
+      padding: 48px 56px 36px;
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+    }
+
+    .b-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 50%, rgba(212,175,55,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .b-logo-area { flex: 1; }
+
+    .b-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .b-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold-3);
+      opacity: 0.6;
+    }
+
+    .b-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 46px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .b-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #B89429, #D4AF37, #F4D577);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .b-subtitle {
+      font-family: 'DM Serif Display', serif;
+      font-size: 14px;
+      font-style: italic;
+      color: var(--text-3);
+      margin-top: 8px;
+    }
+
+    .b-location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 11px;
+      color: var(--text-2);
+      font-weight: 500;
+    }
+
+    .b-location-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Header QR */
+    .b-qr-area {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .b-qr-wrap {
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .b-qr-caption {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-align: center;
+    }
+
+    .b-qr-url {
+      font-size: 8px;
+      color: var(--text-3);
+      text-align: center;
+    }
+
+    /* ── Body ── */
+    .b-body {
+      flex: 1;
+      padding: 40px 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* Sejarah singkat */
+    .b-section-title {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .b-section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(212,175,55,0.3), transparent);
+    }
+
+    .b-sejarah {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-left: 3px solid var(--gold-3);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+    }
+
+    .b-sejarah p {
+      font-size: 12.5px;
+      line-height: 1.85;
+      color: var(--text-2);
+    }
+
+    .b-sejarah p + p {
+      margin-top: 10px;
+    }
+
+    .b-sejarah strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Info grid */
+    .b-info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .b-info-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.1);
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .b-info-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold-3);
+    }
+
+    .b-info-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .b-info-sub {
+      font-size: 10.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    /* Nilai-nilai */
+    .b-values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .b-value-item {
+      text-align: center;
+      padding: 14px 10px;
+      background: rgba(212,175,55,0.05);
+      border: 1px solid rgba(212,175,55,0.12);
+      border-radius: 10px;
+    }
+
+    .b-value-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .b-value-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    /* Tata cara */
+    .b-rules {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .b-rule-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 11px;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .b-rule-num {
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.12);
+      border: 1px solid rgba(212,175,55,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Footer ── */
+    .b-footer {
+      padding: 20px 56px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(0,0,0,0.25);
+    }
+
+    .b-footer-left {
+      font-size: 9px;
+      color: var(--text-3);
+      line-height: 1.6;
+    }
+
+    .b-footer-right {
+      font-size: 9px;
+      color: var(--text-3);
+      text-align: right;
+    }
+
+    .b-bottombar {
+      height: 4px;
+      background: linear-gradient(90deg, #B89429, #D4AF37, #F4D577, #D4AF37, #B89429);
+      flex-shrink: 0;
+    }
+
+    /* Responsive toolbar only — banner stays fixed width */
+    @media (max-width: 860px) {
+      body { padding: 1rem 0.5rem 3rem; }
+      #bannerWrap { transform: scale(0.75); transform-origin: top center; margin-bottom: -280px; }
+    }
+    @media (max-width: 640px) {
+      #bannerWrap { transform: scale(0.48); transform-origin: top center; margin-bottom: -580px; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .toolbar, #exportStatus { display: none; }
+      #bannerWrap { transform: none; box-shadow: none; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Toolbar -->
+<div class="toolbar">
+  <button class="tbtn tbtn--gold" onclick="exportPNG()">⬇ Export PNG (Cetak)</button>
+  <button class="tbtn tbtn--dark" onclick="window.print()">⎙ Print Langsung</button>
+</div>
+<p id="exportStatus"></p>
+
+<!-- BANNER -->
+<div id="bannerWrap">
+<div id="banner">
+
+  <!-- Top bar -->
+  <div class="b-topbar"></div>
+
+  <!-- Header -->
+  <div class="b-header">
+    <div class="b-logo-area">
+      <p class="b-eyebrow">Wisata Religi Jepara</p>
+      <h1 class="b-title">
+        Makam<br><em>Syekh Maulana<br>Mangun Sejati</em>
+      </h1>
+      <p class="b-subtitle">Ulama Penyebar Islam di Jepara, Abad ke-16</p>
+      <div class="b-location">
+        <span class="b-location-dot"></span>
+        Desa Bugel, Kecamatan Kedung, Kabupaten Jepara, Jawa Tengah
+      </div>
+    </div>
+    <div class="b-qr-area">
+      <div class="b-qr-wrap">
+        <div id="qrBanner"></div>
+      </div>
+      <p class="b-qr-caption">Scan untuk info lengkap</p>
+      <p class="b-qr-url">wisatareligidesabugel.vercel.app</p>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="b-body">
+
+    <!-- Sejarah singkat -->
+    <div>
+      <p class="b-section-title">Sejarah Singkat</p>
+      <div class="b-sejarah">
+        <p>
+          <strong>Syekh Maulana Mangun Sejati</strong> adalah seorang ulama besar yang datang dari
+          Jazirah Arab pada pertengahan abad ke-16 untuk menyebarkan ajaran Islam di pesisir utara
+          Jawa. Beliau dikenal sebagai cikal bakal terbentuknya <strong>Desa Bugel</strong>.
+        </p>
+        <p>
+          Dalam sebuah peristiwa bersejarah, beliau berhasil mengalahkan 10 perampok yang meneror
+          warga. Kayu-kayu patah (<em>tugel</em>) yang berserakan menjadi tanda keberanian beliau,
+          dan dari kata <strong>"tugel"</strong> inilah nama <strong>Bugel</strong> berasal — sebuah
+          nama yang mengabadikan kisah heroik hingga hari ini.
+        </p>
+        <p>
+          Makam beliau kini menjadi destinasi ziarah yang aktif dikunjungi ribuan peziarah dari
+          berbagai penjuru setiap tahunnya, terutama saat peringatan <strong>Haul</strong> yang
+          diselenggarakan setiap <strong>27 Maulid</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Info grid -->
+    <div>
+      <p class="b-section-title">Informasi Kunjungan</p>
+      <div class="b-info-grid">
+        <div class="b-info-card">
+          <span class="b-info-label">Lokasi</span>
+          <span class="b-info-value">Desa Bugel</span>
+          <span class="b-info-sub">Kec. Kedung, Kab. Jepara, Jawa Tengah 59463</span>
+        </div>
+        <div class="b-info-card">
+          <span class="b-info-label">Waktu Ziarah</span>
+          <span class="b-info-value">Setiap Hari</span>
+          <span class="b-info-sub">Pagi hingga sore hari, sepanjang tahun</span>
+        </div>
+        <div class="b-info-card">
+          <span class="b-info-label">Haul Tahunan</span>
+          <span class="b-info-value">27 Maulid</span>
+          <span class="b-info-sub">Zikir bersama, doa, & tausiyah keagamaan</span>
+        </div>
+        <div class="b-info-card">
+          <span class="b-info-label">Informasi</span>
+          <span class="b-info-value">Kantor Desa Bugel</span>
+          <span class="b-info-sub">desabugel.kedung@jepara.go.id</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nilai-nilai -->
+    <div>
+      <p class="b-section-title">Nilai Keteladanan</p>
+      <div class="b-values">
+        <div class="b-value-item">
+          <div class="b-value-icon">🛡</div>
+          <span class="b-value-name">Keberanian</span>
+        </div>
+        <div class="b-value-item">
+          <div class="b-value-icon">☮</div>
+          <span class="b-value-name">Dakwah Damai</span>
+        </div>
+        <div class="b-value-item">
+          <div class="b-value-icon">🤝</div>
+          <span class="b-value-name">Musyawarah</span>
+        </div>
+        <div class="b-value-item">
+          <div class="b-value-icon">✨</div>
+          <span class="b-value-name">Kearifan Lokal</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tata cara -->
+    <div>
+      <p class="b-section-title">Tata Cara Ziarah</p>
+      <div class="b-rules">
+        <div class="b-rule-item">
+          <span class="b-rule-num">1</span>
+          <span>Bersikap sopan dan menjaga kesucian area makam</span>
+        </div>
+        <div class="b-rule-item">
+          <span class="b-rule-num">2</span>
+          <span>Membaca doa &amp; Al-Fatihah untuk almarhum</span>
+        </div>
+        <div class="b-rule-item">
+          <span class="b-rule-num">3</span>
+          <span>Tidak membuat kebisingan di area makam</span>
+        </div>
+        <div class="b-rule-item">
+          <span class="b-rule-num">4</span>
+          <span>Mengikuti petunjuk penjaga makam</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /b-body -->
+
+  <!-- Footer -->
+  <div class="b-footer">
+    <div class="b-footer-left">
+      <strong style="color:#D4AF37">Wisata Religi Desa Bugel</strong><br>
+      Program KKN — Desa Bugel, Kecamatan Kedung, Kabupaten Jepara
+    </div>
+    <div class="b-footer-right">
+      Scan QR Code untuk informasi<br>
+      lengkap &amp; panduan arah
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="b-bottombar"></div>
+
+</div><!-- /banner -->
+</div><!-- /bannerWrap -->
+
+<script>
+  const QR_URL = 'https://wisatareligidesabugel.vercel.app/';
+
+  // Step 1: Generate QR sebagai canvas, lalu konversi ke <img> data URL
+  // supaya dom-to-image bisa baca tanpa masalah cross-origin
+  function initQR() {
+    const qrDiv = document.getElementById('qrBanner');
+
+    // Buat QR di div temporary
+    const tmp = document.createElement('div');
+    tmp.style.cssText = 'position:absolute;left:-9999px;top:-9999px;';
+    document.body.appendChild(tmp);
+
+    new QRCode(tmp, {
+      text: QR_URL,
+      width: 140,
+      height: 140,
+      colorDark: '#0D0D0D',
+      colorLight: '#FFFFFF',
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Tunggu render, lalu ambil sebagai data URL dan masukkan ke img
+    setTimeout(() => {
+      const qrCanvas = tmp.querySelector('canvas');
+      const qrImg   = tmp.querySelector('img');
+
+      let dataURL = '';
+      if (qrCanvas && qrCanvas.width > 0) {
+        dataURL = qrCanvas.toDataURL('image/png');
+      } else if (qrImg && qrImg.src) {
+        dataURL = qrImg.src;
+      }
+
+      if (dataURL) {
+        // Masukkan sebagai <img> statis ke banner — tidak ada masalah canvas 0x0
+        const img = document.createElement('img');
+        img.src = dataURL;
+        img.style.cssText = 'width:140px;height:140px;display:block;border-radius:6px;';
+        img.alt = 'QR Code Wisata Religi Desa Bugel';
+        qrDiv.appendChild(img);
+      }
+
+      document.body.removeChild(tmp);
+    }, 500);
+  }
+
+  // Step 2: Export banner ke PNG
+  async function exportPNG() {
+    const status = document.getElementById('exportStatus');
+    status.textContent = '⏳ Memproses... harap tunggu';
+
+    // Pastikan QR sudah ada sebagai img
+    const qrImg = document.querySelector('#qrBanner img');
+    if (!qrImg || !qrImg.complete || qrImg.naturalWidth === 0) {
+      status.textContent = '⏳ QR belum siap, coba lagi dalam 1 detik...';
+      setTimeout(exportPNG, 1000);
+      return;
+    }
+
+    try {
+      const banner = document.getElementById('banner');
+      const scale  = 3; // resolusi 3x untuk cetak
+
+      const dataUrl = await domtoimage.toPng(banner, {
+        width:  banner.offsetWidth  * scale,
+        height: banner.offsetHeight * scale,
+        style: {
+          transform: `scale(${scale})`,
+          transformOrigin: 'top left',
+          width:  banner.offsetWidth  + 'px',
+          height: banner.offsetHeight + 'px',
+        },
+        bgcolor: '#0D0D0D',
+        imagePlaceholder: undefined,
+      });
+
+      const link = document.createElement('a');
+      link.download = 'banner-wisata-religi-desa-bugel.png';
+      link.href = dataUrl;
+      link.click();
+
+      status.textContent = '✅ Berhasil! Cek folder Download.';
+      setTimeout(() => { status.textContent = ''; }, 5000);
+
+    } catch (err) {
+      console.error(err);
+      status.textContent = '❌ Export gagal. Coba gunakan Print → Save as PDF.';
+    }
+  }
+
+  // Init QR saat halaman load
+  window.addEventListener('load', initQR);
+</script>
+</body>
+</html>
