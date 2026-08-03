@@ -136,9 +136,16 @@ img { max-width: 100%; display: block; }
 }
 
 .section {
+  min-height: 100svh;
   padding: clamp(5rem, 10vw, 9rem) 0;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.section > .container {
+  width: 100%;
 }
 
 /* ─────────────────────────────────────────
@@ -707,34 +714,8 @@ img { max-width: 100%; display: block; }
   gap: 1rem;
 }
 
-/* Scroll arrow */
-.hero__scroll {
-  position: absolute;
-  bottom: 2.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px; height: 44px;
-  border-radius: 50%;
-  border: 1px solid rgba(212,175,55,0.2);
-  color: var(--c-gold);
-  font-size: 1.15rem;
-  z-index: 10;
-  animation: scrollBounce 2.5s ease-in-out infinite;
-  transition: all 0.25s var(--ease);
-}
-
-.hero__scroll:hover {
-  background: rgba(212,175,55,0.1);
-  border-color: var(--c-gold);
-}
-
-@keyframes scrollBounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(6px); }
-}
+/* Scroll arrow — hidden */
+.hero__scroll { display: none; }
 
 @media (max-width: 600px) {
   .hero__cta { flex-direction: column; padding: 0 1.5rem; }
@@ -1791,6 +1772,42 @@ img { max-width: 100%; display: block; }
   color: var(--c-text-3);
 }
 
+.footer__bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* QR link di footer */
+.footer__qr-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(212,175,55,0.1);
+  border: 1.5px solid rgba(212,175,55,0.35);
+  border-radius: 8px;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--c-gold);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: all 0.2s var(--ease);
+}
+
+.footer__qr-link i {
+  font-size: 1rem;
+}
+
+.footer__qr-link:hover {
+  background: var(--c-gold);
+  color: #0D0D0D;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(212,175,55,0.3);
+}
+
 .footer__bottom-badges {
   display: flex;
   gap: 0.75rem;
@@ -1820,6 +1837,7 @@ img { max-width: 100%; display: block; }
 @media (max-width: 600px) {
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer__bottom-inner { flex-direction: column; text-align: center; }
+  .footer__bottom-right { justify-content: center; }
   .footer__bottom-badges { justify-content: center; }
   .footer__cta-actions { width: 100%; }
   .footer__cta-actions .btn { flex: 1; justify-content: center; }

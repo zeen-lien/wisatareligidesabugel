@@ -92,8 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     '.hero__sub',
     '.hero__desc',
     '.hero__meta',
-    '.hero__cta',
-    '.hero__scroll'
+    '.hero__cta'
   ];
   gsap.set(heroEls, { opacity: 0, y: 30 });
   // Title lines butuh clip dari bawah
@@ -112,9 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .to('.hero__meta',
       { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.4')
     .to('.hero__cta',
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.4')
-    .to('.hero__scroll',
-      { opacity: 1, y: 0, duration: 0.4 }, '-=0.2');
+      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }, '-=0.4');
 
   /* ─────────────────────────────────────
      5. HERO DECORATIVE PARALLAX
